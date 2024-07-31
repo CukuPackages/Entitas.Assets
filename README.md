@@ -1,7 +1,7 @@
 # Entitas.Generator.dll to generate code using via Roslyn
 
 ## Add Entitas.Generator as submodule
-1. Open Git Bash / Terminal at the project root and add defne submodule: **_git submodule add https://github.com/CukuHub/Entitas.Generators.git Assets/Entitas/Editor_**
+1. Open Git Bash / Terminal at the project root and add submodule: **_git submodule add https://github.com/CukuHub/Entitas.Generators.git Assets/Entitas/Editor_**
 2. Initialize submodule: **_git submodule init_**
 3. Update submodule: **_git submodule update_**
 4. Add submodule: **_git add .gitmodules Assets/Entitas/Editor_**
