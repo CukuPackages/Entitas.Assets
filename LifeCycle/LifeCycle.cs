@@ -1,24 +1,15 @@
-using Entitas.Unity;
-
-public class LifeCycle
+public partial class LifeCycle
 {
-    private readonly Entitas.Systems features;
+    Entitas.Systems features;
 
-    private bool isTearingDown = false;
+    bool isTearingDown = false;
 
-    public LifeCycle()
-    {
-        Contexts.Initialize();
-        var assetContext = WorldContext.Instance;
-        assetContext.CreateContextObserver();
-
-        features = new Features(assetContext);
-    }
+    public LifeCycle() => InitializeFeatures();
 
     public void Initialize()
     {
         isTearingDown = false;
-        // Reactivate Reactive Systems in case of a LifyCycle restart
+        // Reactivate Reactive Systems in case of a LifeCycle restart
         features.ActivateReactiveSystems();
         features.Initialize();
     }
@@ -33,7 +24,6 @@ public class LifeCycle
         isTearingDown = true;
         features.TearDown();
         features.DeactivateReactiveSystems();
-        // Reset contexts
-        WorldContext.Instance.Reset();
+        ResetContexts();
     }
 }
