@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 
 public class ContextInitializer
@@ -8,3 +9,4 @@ public class ContextInitializer
         static EditorInitializer() => Contexts.Initialize();
     }
 }
+#endif
