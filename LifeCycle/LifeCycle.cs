@@ -10,11 +10,16 @@ public partial class LifeCycle
 
     List<AsyncOperationHandle> loadedScenes = new List<AsyncOperationHandle>();
 
-    public LifeCycle() => InitializeFeatures();
+    public LifeCycle() => InitializeContexts();
 
     public async void Initialize(string[] scenes)
     {
         isTearingDown = false;
+
+        await InitializeSettings();
+
+        InitializeFeatures();
+
         // Reactivate Reactive Systems in case of a LifeCycle restart
         features.ActivateReactiveSystems();
         features.Initialize();
@@ -23,13 +28,14 @@ public partial class LifeCycle
             loadedScenes.Add(await scene.LoadScene());
     }
 
-    public void Execute() => features.Execute();
+    public void Execute() => features?.Execute();
 
-    public void Cleanup() => features.Cleanup();
+    public void Cleanup() => features?.Cleanup();
 
     public void TearDown()
     {
         if (isTearingDown) return;
+
         isTearingDown = true;
         features.TearDown();
         features.DeactivateReactiveSystems();
