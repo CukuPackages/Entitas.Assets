@@ -1,6 +1,7 @@
 public class LifeCycleController : UnityEngine.MonoBehaviour
 {
-    [UnityEngine.SerializeField] string[] scenes;
+    [UnityEngine.SerializeField] string[] Scenes;
+    [UnityEngine.SerializeField] UnityEngine.Events.UnityEvent OnScenesInitialized;
 
     private LifeCycle lifeCycle;
 
@@ -12,7 +13,11 @@ public class LifeCycleController : UnityEngine.MonoBehaviour
     /// <summary>
     /// Initialize <see cref="LifeCycle"/>.
     /// </summary>
-    private void OnEnable() => lifeCycle.Initialize(scenes);
+    private async void OnEnable()
+    {
+        await lifeCycle.Initialize(Scenes);
+        OnScenesInitialized?.Invoke();
+    }
 
     /// <summary>
     /// Update <see cref="LifeCycle"/>.

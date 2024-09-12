@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using static Cuku.Utilities.Assets;
 
@@ -12,7 +13,7 @@ public partial class LifeCycle
 
     public LifeCycle() => InitializeContexts();
 
-    public async void Initialize(string[] scenes)
+    public async Task Initialize(string[] scenes)
     {
         isTearingDown = false;
 
