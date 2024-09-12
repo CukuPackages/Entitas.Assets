@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using static Cuku.Assets.Assets;
+using static Cuku.Utilities.Assets;
 
 public partial class LifeCycle
 {
